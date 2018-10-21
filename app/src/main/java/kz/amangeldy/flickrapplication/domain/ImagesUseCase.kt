@@ -4,7 +4,6 @@ import io.reactivex.Completable
 import io.reactivex.Observable
 import io.reactivex.Single
 import io.reactivex.functions.BiFunction
-import io.reactivex.schedulers.Schedulers
 import kz.amangeldy.flickrapplication.data.entity.PhotoDataModel
 import kz.amangeldy.flickrapplication.data.entity.ProfileDataModel
 import kz.amangeldy.flickrapplication.domain.entity.PhotoModel

@@ -4,15 +4,15 @@ import kz.amangeldy.flickrapplication.utils.Mapper
 import kz.amangeldy.flickrapplication.data.entity.OwnerDataModel
 import kz.amangeldy.flickrapplication.data.entity.PhotoDataModel
 import kz.amangeldy.flickrapplication.domain.entity.PhotoModel
-import kz.amangeldy.flickrapplication.presentation.entity.FlickrImagePresentationModel
+import kz.amangeldy.flickrapplication.presentation.entity.ImagePresentationModel
 import kz.amangeldy.flickrapplication.presentation.entity.Owner
 
 private const val IMAGE_URL_FMT = "https://farm%s.staticflickr.com/%s/%s_%s.jpg"
 private const val OWNER_AVATAR_URL_FMT = "http://farm%s.staticflickr.com/%s/buddyicons/%s.jpg"
 
-class ImagesDomainToPresentationMapper: Mapper<PhotoModel, FlickrImagePresentationModel> {
+class ImagesDomainToPresentationMapper: Mapper<PhotoModel, ImagePresentationModel> {
 
-    override fun invoke(from: PhotoModel): FlickrImagePresentationModel {
+    override fun invoke(from: PhotoModel): ImagePresentationModel {
         with(from) {
             val owner = Owner(
                 from.owner.id,
@@ -21,7 +21,7 @@ class ImagesDomainToPresentationMapper: Mapper<PhotoModel, FlickrImagePresentati
                 from.owner.mapOwnerAvatarUrl()
             )
 
-            return FlickrImagePresentationModel(
+            return ImagePresentationModel(
                 photoDataModel.id.toLongOrNull() ?: 0L,
                 photoDataModel.mapImageUrl(),
                 photoDataModel.title,
@@ -35,5 +35,4 @@ class ImagesDomainToPresentationMapper: Mapper<PhotoModel, FlickrImagePresentati
 
     private fun OwnerDataModel.mapOwnerAvatarUrl(): String =
         OWNER_AVATAR_URL_FMT.format(iconfarm, iconserver, id)
-
 }

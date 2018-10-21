@@ -6,7 +6,6 @@ import kz.amangeldy.flickrapplication.data.entity.ProfileDataModel
 import kz.amangeldy.flickrapplication.data.entity.PhotosRootDataModel
 import retrofit2.http.GET
 import retrofit2.http.Query
-import retrofit2.http.QueryMap
 
 private const val FORMAT_JSON = "json"
 private const val NO_JSON_CALLBACK_VALUE = 1

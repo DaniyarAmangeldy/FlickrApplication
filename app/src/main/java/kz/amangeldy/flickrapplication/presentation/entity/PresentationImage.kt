@@ -2,7 +2,7 @@ package kz.amangeldy.flickrapplication.presentation.entity
 
 import kz.amangeldy.flickrapplication.presentation.MainListItem
 
-data class FlickrImagePresentationModel(
+data class ImagePresentationModel(
     val id: Long,
     val imageUrl: String,
     val title: String,

@@ -4,8 +4,6 @@ import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 
-
-
 class ProgressBarViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
 
     init {

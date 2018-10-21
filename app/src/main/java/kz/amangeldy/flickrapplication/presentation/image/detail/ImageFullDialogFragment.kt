@@ -31,7 +31,9 @@ class ImageFullDialogFragment: DialogFragment(), View.OnClickListener {
         setStyle(STYLE_NO_FRAME, R.style.Theme_AppCompat_Light)
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater,
+                              container: ViewGroup?,
+                              savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_image_full, container, false)
     }
 

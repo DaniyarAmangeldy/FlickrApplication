@@ -14,14 +14,14 @@ import kz.amangeldy.flickrapplication.domain.GetSearchQueriesUseCase
 import kz.amangeldy.flickrapplication.domain.ImagesUseCase
 import kz.amangeldy.flickrapplication.domain.entity.PhotoModel
 import kz.amangeldy.flickrapplication.presentation.custom.view.PaginableRecyclerView
-import kz.amangeldy.flickrapplication.presentation.entity.FlickrImagePresentationModel
+import kz.amangeldy.flickrapplication.presentation.entity.ImagePresentationModel
 import kz.amangeldy.flickrapplication.utils.Event
 import java.util.concurrent.TimeUnit
 
 class MainViewModel(
     private val imagesUseCase: ImagesUseCase,
     private val getSearchQueriesUseCase: GetSearchQueriesUseCase,
-    private val mapper: Mapper<PhotoModel, FlickrImagePresentationModel>
+    private val mapper: Mapper<PhotoModel, ImagePresentationModel>
 ) : ViewModel() {
 
     val onImageClickEvent = MutableLiveData<Event<String>>()
@@ -49,7 +49,7 @@ class MainViewModel(
     }
 
     val onImageClickListener = object: ImageViewHolder.OnImageClickListener {
-        override fun onImageClick(image: FlickrImagePresentationModel) {
+        override fun onImageClick(image: ImagePresentationModel) {
             onImageClickEvent.value = Event(image.imageUrl)
         }
     }
@@ -71,12 +71,8 @@ class MainViewModel(
         }
     }
 
-    private fun hideKeyboard() {
-        hideKeyboardEvent.value = Event(Unit)
-    }
-
     val imageListLiveData by lazy {
-        MutableLiveData<MutableList<FlickrImagePresentationModel>>().apply {
+        MutableLiveData<MutableList<ImagePresentationModel>>().apply {
             value = mutableListOf()
             setIsRefreshing(true)
             requestImages(page)
@@ -90,7 +86,7 @@ class MainViewModel(
         }
     }
 
-    private val tempImagesCache = mutableListOf<FlickrImagePresentationModel>()
+    private val tempImagesCache = mutableListOf<ImagePresentationModel>()
     private val compositeDisposable = CompositeDisposable()
     private var page = 1
     private var searchPage = 1
@@ -124,7 +120,7 @@ class MainViewModel(
         compositeDisposable.add(disposable)
     }
 
-    private fun onImageLoadSuccess(images: List<FlickrImagePresentationModel>) {
+    private fun onImageLoadSuccess(images: List<ImagePresentationModel>) {
         setIsRefreshing(false)
         updateImagesLiveData(images)
         if (query.isNullOrBlank()) {
@@ -137,11 +133,15 @@ class MainViewModel(
         isRefreshingLiveData.value = isRefreshing
     }
 
+    private fun hideKeyboard() {
+        hideKeyboardEvent.value = Event(Unit)
+    }
+
     private fun onSearchQueryUpdated(queries: List<SearchQueryRoomModel>) {
         searchQueriesLiveData.value = queries.map { it.query }
     }
 
-    private fun updateImagesLiveData(images: List<FlickrImagePresentationModel>) {
+    private fun updateImagesLiveData(images: List<ImagePresentationModel>) {
         imageListLiveData.value = imageListLiveData.value?.apply { addAll(images) }
     }
 

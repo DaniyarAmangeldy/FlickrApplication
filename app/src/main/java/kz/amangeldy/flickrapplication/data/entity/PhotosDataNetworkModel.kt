@@ -1,6 +1,5 @@
 package kz.amangeldy.flickrapplication.data.entity
 
-
 data class PhotosRootDataModel(
     val photos: PhotosDataModel?,
     val stat: String

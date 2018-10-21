@@ -12,14 +12,14 @@ import kz.amangeldy.flickrapplication.presentation.ImageViewHolder
 import kz.amangeldy.flickrapplication.utils.ImageLoader
 import kz.amangeldy.flickrapplication.presentation.ImagesAdapter
 import kz.amangeldy.flickrapplication.presentation.custom.view.PaginableRecyclerView
-import kz.amangeldy.flickrapplication.presentation.entity.FlickrImagePresentationModel
+import kz.amangeldy.flickrapplication.presentation.entity.ImagePresentationModel
 
 class MainBindingAdapter(private val imageLoader: ImageLoader) {
 
     @Suppress("UNCHECKED_CAST")
     @BindingAdapter(value = ["imageList", "onScrolledToBottom", "onImageClickListener"], requireAll = true)
     fun bindImageList(recyclerView: PaginableRecyclerView,
-                      images: List<FlickrImagePresentationModel>?,
+                      images: List<ImagePresentationModel>?,
                       onBottomScrollListener: PaginableRecyclerView.OnBottomScrollListener,
                       onImageClickListener: ImageViewHolder.OnImageClickListener?
     ) {

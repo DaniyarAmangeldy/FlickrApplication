@@ -25,7 +25,7 @@ private const val IMAGE_FULL_FRAGMENT_TAG = "image_full_fragment_tag"
 class MainActivity : AppCompatActivity(), SearchView.OnSuggestionListener {
 
     private val mainViewModel: MainViewModel by viewModel()
-    private val component: DataBindingComponent by inject()
+    private val bindingComponent: DataBindingComponent by inject()
     private val exceptionMessageFactory: ExceptionMessageFactory by inject()
 
     private lateinit var searchView: SearchView
@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity(), SearchView.OnSuggestionListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val binding: ActivityMainBinding =
-            DataBindingUtil.setContentView(this, R.layout.activity_main, component)
+            DataBindingUtil.setContentView(this, R.layout.activity_main, bindingComponent)
         binding.setLifecycleOwner(this)
         binding.viewModel = mainViewModel
         rootView = activity_main_root

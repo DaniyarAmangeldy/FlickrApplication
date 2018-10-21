@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.layout_card_image_item.view.*
 import kz.amangeldy.flickrapplication.utils.ImageLoader
 import kz.amangeldy.flickrapplication.R
-import kz.amangeldy.flickrapplication.presentation.entity.FlickrImagePresentationModel
+import kz.amangeldy.flickrapplication.presentation.entity.ImagePresentationModel
 import kz.amangeldy.flickrapplication.presentation.entity.Owner
 import kz.amangeldy.flickrapplication.utils.setGone
 import kz.amangeldy.flickrapplication.utils.setVisible
@@ -20,20 +20,19 @@ class ImageViewHolder(
 
     @DrawableRes
     private val avatarPlaceholderRes = R.drawable.flick_avatar_placeholder
-
     private val ownerName: TextView = view.layout_card_image_item_name
     private val ownerUsername: TextView = view.layout_card_image_item_username
     private val ownerImage: ImageView = view.layout_card_image_item_avatar
     private val image: ImageView = view.layout_card_image_item_image
     private val description: TextView = view.layout_card_image_item_description
-    private var item: FlickrImagePresentationModel? = null
+    private var item: ImagePresentationModel? = null
     private var onImageClickListener: OnImageClickListener? = null
 
     override fun onClick(view: View?) {
         item?.let { onImageClickListener?.onImageClick(it) }
     }
 
-    fun bind(item: FlickrImagePresentationModel, onImageClickListener: OnImageClickListener?) {
+    fun bind(item: ImagePresentationModel, onImageClickListener: OnImageClickListener?) {
         view.setOnClickListener(this)
         this.onImageClickListener = onImageClickListener
         this.item = item
@@ -69,6 +68,6 @@ class ImageViewHolder(
     }
 
     interface OnImageClickListener {
-        fun onImageClick(image: FlickrImagePresentationModel)
+        fun onImageClick(image: ImagePresentationModel)
     }
 }

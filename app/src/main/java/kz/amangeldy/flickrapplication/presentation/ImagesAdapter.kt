@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import kz.amangeldy.flickrapplication.utils.ImageLoader
 import kz.amangeldy.flickrapplication.R
-import kz.amangeldy.flickrapplication.presentation.entity.FlickrImagePresentationModel
+import kz.amangeldy.flickrapplication.presentation.entity.ImagePresentationModel
 import kz.amangeldy.flickrapplication.utils.removeIfInstance
 import java.lang.IllegalStateException
 
@@ -20,7 +20,7 @@ class ImagesAdapter(
 
     override fun getItemViewType(position: Int): Int {
         return when (list[position]) {
-            is FlickrImagePresentationModel -> R.layout.layout_card_image_item
+            is ImagePresentationModel -> R.layout.layout_card_image_item
             is ProgressBarListItem -> R.layout.layout_progress_bar_item
             else -> throw IllegalStateException("Cannot create view type with element: ${list[position]}")
         }
@@ -39,7 +39,7 @@ class ImagesAdapter(
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (holder is ImageViewHolder) {
-            holder.bind(getItem(position) as FlickrImagePresentationModel, onImageClickListener)
+            holder.bind(getItem(position) as ImagePresentationModel, onImageClickListener)
         }
     }
 
@@ -72,8 +72,8 @@ class ImageDiffCallback : DiffUtil.ItemCallback<MainListItem>() {
         oldItem: MainListItem,
         newItem: MainListItem
     ): Boolean {
-        return oldItem is FlickrImagePresentationModel &&
-                newItem is FlickrImagePresentationModel &&
+        return oldItem is ImagePresentationModel &&
+                newItem is ImagePresentationModel &&
                 (oldItem.id == newItem.id ||
                  oldItem.title == newItem.title ||
                  oldItem.imageUrl == newItem.imageUrl ||

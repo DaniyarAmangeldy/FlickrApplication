@@ -11,7 +11,6 @@ class DefaultSearchQueryRepository(
 
     override fun insertSearchQuery(text: String) {
         return cacheSource.insertSearchQuery(SearchQueryRoomModel(query = text))
-
     }
 
     override fun getSearchQueries(): Flowable<List<SearchQueryRoomModel>> {

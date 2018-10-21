@@ -15,8 +15,8 @@ class PaginableRecyclerView(
     attrs: Int
 ): RecyclerView(context, attributeSet, attrs), LoadableAdapter {
 
-    private var isLoading = false
     var onBottomScrollListener: OnBottomScrollListener? = null
+    private var isLoading = false
 
     private val onScrollListener = object: RecyclerView.OnScrollListener() {
         override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {

@@ -10,7 +10,6 @@ class DefaultImagesRepository(
 ) : ImagesRepository {
 
     override fun getImages(page: Int): Single<PhotosRootDataModel> {
-
         return apiSource.getImageList(page)
     }
 

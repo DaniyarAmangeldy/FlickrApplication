@@ -14,7 +14,7 @@ import kz.amangeldy.flickrapplication.domain.repository.ImagesRepository
 import kz.amangeldy.flickrapplication.domain.repository.SearchQueryRepository
 import kz.amangeldy.flickrapplication.domain.repository.UserRepository
 import kz.amangeldy.flickrapplication.presentation.MainViewModel
-import kz.amangeldy.flickrapplication.presentation.entity.FlickrImagePresentationModel
+import kz.amangeldy.flickrapplication.presentation.entity.ImagePresentationModel
 import kz.amangeldy.flickrapplication.presentation.mapper.ImagesDomainToPresentationMapper
 import org.koin.androidx.viewmodel.ext.koin.viewModel
 import org.koin.dsl.module.Module
@@ -63,7 +63,7 @@ val mainModule: Module = module {
     }
 
     factory {
-        ImagesDomainToPresentationMapper() as Mapper<PhotoModel, FlickrImagePresentationModel>
+        ImagesDomainToPresentationMapper() as Mapper<PhotoModel, ImagePresentationModel>
     }
 
     single {
