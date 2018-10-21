@@ -1,4 +1,4 @@
-package kz.amangeldy.flickrapplication.presentation
+package kz.amangeldy.flickrapplication.presentation.custom.view
 
 import android.content.Context
 import android.util.AttributeSet
@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
-import kz.amangeldy.flickrapplication.presentation.binding.OnBottomScrollListener
+import kz.amangeldy.flickrapplication.presentation.LoadableAdapter
 
 class PaginableRecyclerView(
     context: Context,
@@ -67,5 +67,10 @@ class PaginableRecyclerView(
                 (layoutManager as LinearLayoutManager).findFirstVisibleItemPosition()
             else -> -1
         }
+    }
+
+    interface OnBottomScrollListener {
+
+        fun onScrolledToBottom()
     }
 }

@@ -1,4 +1,4 @@
-package kz.amangeldy.flickrapplication
+package kz.amangeldy.flickrapplication.utils
 
 interface Mapper<in FROM, out TO> {
 

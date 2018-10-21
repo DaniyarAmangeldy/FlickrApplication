@@ -8,5 +8,5 @@ interface ImagesRepository {
 
     fun getImages(page: Int): Single<PhotosRootDataModel>
 
-    fun searchImages(page: Int, searchQuery: String?): Single<PhotosRootDataModel>
+    fun searchImages(page: Int, searchQuery: String): Single<PhotosRootDataModel>
 }

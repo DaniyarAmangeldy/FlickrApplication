@@ -1,4 +1,4 @@
-package kz.amangeldy.flickrapplication
+package kz.amangeldy.flickrapplication.utils
 
 import android.widget.ImageView
 import androidx.annotation.DrawableRes

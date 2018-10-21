@@ -1,4 +1,4 @@
-package kz.amangeldy.flickrapplication
+package kz.amangeldy.flickrapplication.utils
 
 
 fun <T> MutableList<T>.removeIfInstance(predicate: (item: T) -> Boolean) {

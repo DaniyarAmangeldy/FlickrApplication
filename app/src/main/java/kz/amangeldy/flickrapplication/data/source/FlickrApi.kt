@@ -29,7 +29,8 @@ interface FlickrApi {
 
     @GET("/services/rest")
     fun searchImages(
-        @QueryMap map: Map<String, @JvmSuppressWildcards Any>,
+        @Query("page") page: Int,
+        @Query("text") text: String,
         @Query("per_page") perPage: Int = IMAGES_PER_PAGE,
         @Query("api_key") apiKey: String = BuildConfig.API_KEY,
         @Query("method") method: String = SEARCH_PHOTOS_METHOD,

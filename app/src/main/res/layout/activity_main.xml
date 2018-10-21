@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
+
     <data>
+
         <variable
             name="viewModel"
             type="kz.amangeldy.flickrapplication.presentation.MainViewModel"
@@ -11,6 +13,7 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/activity_main_root"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".presentation.MainActivity"
@@ -21,42 +24,35 @@
             android:layout_height="wrap_content"
             >
 
-            <FrameLayout
-                android:id="@+id/activity_main_toolbar_container"
+            <androidx.appcompat.widget.SearchView
+                android:id="@+id/activity_main_search_view"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
+                android:layout_height="?attr/actionBarSize"
+                android:imeOptions="actionSearch"
                 app:layout_scrollFlags="enterAlways|scroll"
-                >
-
-                <androidx.appcompat.widget.Toolbar
-                    android:id="@+id/activity_main_toolbar"
-                    android:layout_width="match_parent"
-                    android:layout_height="?attr/actionBarSize"
-                    />
-
-                <com.miguelcatalan.materialsearchview.MaterialSearchView
-                    android:id="@+id/activity_main_toolbar_search_view"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:onQueryTextSubmit="@{viewModel.onTextQueryListener}"
-                    android:hint="@string/search_hint"
-                    />
-
-            </FrameLayout>
-
+                app:onQueryTextSubmit="@{viewModel.onTextQueryListener}"
+                app:suggestions="@{viewModel.searchQueriesLiveData}"
+                />
         </com.google.android.material.appbar.AppBarLayout>
 
-        <kz.amangeldy.flickrapplication.presentation.PaginableRecyclerView
-            android:id="@+id/activity_main_list"
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:imageList="@{viewModel.imageListLiveData}"
-            app:onScrolledToBottom="@{viewModel.onBottomScrollListener}"
+            app:onRefresh="@{viewModel.onRefreshListener}"
+            app:refreshing="@{viewModel.isRefreshingLiveData}"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
-            />
+            >
+
+            <kz.amangeldy.flickrapplication.presentation.custom.view.PaginableRecyclerView
+                android:id="@+id/activity_main_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:imageList="@{viewModel.imageListLiveData}"
+                app:onImageClickListener="@{viewModel.onImageClickListener}"
+                app:onScrolledToBottom="@{viewModel.onBottomScrollListener}"
+                />
+
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

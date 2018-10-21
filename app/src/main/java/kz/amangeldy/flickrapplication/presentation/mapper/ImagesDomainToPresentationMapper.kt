@@ -1,6 +1,6 @@
 package kz.amangeldy.flickrapplication.presentation.mapper
 
-import kz.amangeldy.flickrapplication.Mapper
+import kz.amangeldy.flickrapplication.utils.Mapper
 import kz.amangeldy.flickrapplication.data.entity.OwnerDataModel
 import kz.amangeldy.flickrapplication.data.entity.PhotoDataModel
 import kz.amangeldy.flickrapplication.domain.entity.PhotoModel
